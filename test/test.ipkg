@@ -1,0 +1,9 @@
+package test
+
+version    = 0.0.1
+authors    = "Arimura Sena"
+license    = "BAN-ZHINESE-USING"
+depends    = dice
+sourcedir  = "src"
+executable = "Test.js"
+main       = Test
