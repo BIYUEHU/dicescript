@@ -1,10 +1,10 @@
-module Parser
+module Dice.Parser
 
-import Lexer
+import Dice.Lexer
 import Data.List
-import Token
-import Ast
-import Utils
+import Dice.Token
+import Dice.Ast
+import Dice.Utils
 
 export
 record ParseState where

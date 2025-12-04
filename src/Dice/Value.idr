@@ -1,7 +1,7 @@
-module Value
+module Dice.Value
 
-import Ast
-import Utils
+import Dice.Ast
+import Dice.Utils
 
 public export
 data Value = VBool Bool | VNum Double | VArray (List Value) | VLambda (List String) DExpr
@@ -17,6 +17,7 @@ implementation Show Value where
 public export
 BuiltinFunction : Type
 BuiltinFunction = List Value -> IO $ OpResult Value
+
 
 public export
 BuiltinWithLambdaFunction : Type

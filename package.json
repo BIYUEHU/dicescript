@@ -3,9 +3,13 @@
   "private": true,
   "version": "0.1.0",
   "scripts": {
-    "start": "node build/exec/Main.js",
-    "dev": "python scripts/watch.py --root src --ext .idr --cmd \"npm run dev:only\"",
+    "start": "node repl/build/exec/Repl.js",
+    "dev": "python scripts/watch.py --root ./ --ext .idr --cmd \"npm run dev:only\"",
     "dev:only": "npm run build && npm run start",
-    "build": "idris2 --cg node --build"
+    "build": "cd repl && idris2 --install ../dice.ipkg && idris2 --cg node --build",
+    "dev:web": "npm run build:web && cd web && npx vite",
+    "build:web": "cd web && idris2 --install ../dice.ipkg && idris2 --cg javascript --build",
+    "test": "cd test && idris2 --install ../dice.ipkg && idris2 --cg node --build && node build/exec/Test.js",
+    "pack": "idris2 --cg javascript --build # TODO"
   }
 }

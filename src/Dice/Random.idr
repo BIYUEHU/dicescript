@@ -1,4 +1,4 @@
-module Random
+module Dice.Random
 
 import Data.Bits
 

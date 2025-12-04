@@ -1,11 +1,11 @@
-module Evaluator
+module Dice.Evaluator
 
 import Data.List
-import Value
-import Ast
-import Utils
-import Random
-import Internal
+import Dice.Value
+import Dice.Ast
+import Dice.Utils
+import Dice.Random
+import Dice.Internal
 
 range : Int -> Int -> List Int
 range lo hi = if lo > hi then [] else lo :: range (lo + 1) hi

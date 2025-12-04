@@ -1,6 +1,6 @@
-module Combinator
+module Dice.Combinator
 
-import Utils
+import Dice.Utils
 
 public export
 Parser : Type -> Type

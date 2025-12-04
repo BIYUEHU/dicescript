@@ -1,10 +1,10 @@
-module Internal
+module Dice.Internal
 
 import Data.List
-import Ast
-import Utils
-import Value
-import Random
+import Dice.Ast
+import Dice.Utils
+import Dice.Value
+import Dice.Random
 
 typeCheckAll : (Value -> OpResult a) -> List Value -> OpResult (List a)
 typeCheckAll f xs = traverse f xs

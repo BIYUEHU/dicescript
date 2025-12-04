@@ -7,7 +7,7 @@ import time
 import signal
 from pathlib import Path
 
-INTERVAL = 0.5
+INTERVAL: float = 0.5
 
 
 def gather_files(root: Path, exts, ignore_dirs):

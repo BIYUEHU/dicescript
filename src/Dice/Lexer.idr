@@ -1,8 +1,8 @@
-module Lexer
+module Dice.Lexer
 
 import Data.String
-import Token
-import Utils
+import Dice.Token
+import Dice.Utils
 
 export
 record LexState where
@@ -85,8 +85,8 @@ nextToken state =
       let (ident, rest) = readIdent $ c :: cs
           consumed = length ident
       in case ident of
-        "T" => Right (TBool True, MkLexState rest (state'.pos + consumed))
-        "F" => Right (TBool False, MkLexState rest (state'.pos + consumed))
+        "True" => Right (TBool True, MkLexState rest (state'.pos + consumed))
+        "False" => Right (TBool False, MkLexState rest (state'.pos + consumed))
         "e" => Right (TNumber 2.718281828, MkLexState rest (state'.pos + consumed))
         "p" => Right (TNumber 3.141592654, MkLexState rest (state'.pos + consumed))
         _ => Right (TIdent ident, MkLexState rest (state'.pos + consumed))

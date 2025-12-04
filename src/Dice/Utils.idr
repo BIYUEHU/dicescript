@@ -1,4 +1,4 @@
-module Utils
+module Dice.Utils
 
 public export
 HString : Type

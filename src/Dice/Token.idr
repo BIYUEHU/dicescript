@@ -1,4 +1,4 @@
-module Token
+module Dice.Token
 
 public export
 data Token

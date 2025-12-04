@@ -1,7 +1,7 @@
-module TestCombinator
+module Dice.TestCombinator
 
-import Combinator
-import Utils
+import Dice.Combinator
+import Dice.Utils
 
 testParser : Show a => String -> Parser a -> String -> IO ()
 testParser name parser input = do

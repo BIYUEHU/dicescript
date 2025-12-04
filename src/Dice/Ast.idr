@@ -1,6 +1,6 @@
-module Ast
+module Dice.Ast
 
-import Utils
+import Dice.Utils
 
 public export
 data DPrefixOp = DNeg | DNot

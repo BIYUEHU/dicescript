@@ -1,8 +1,8 @@
-module ParserCom
+module Dice.ParserCom
 
-import Combinator
-import Ast
-import Utils
+import Dice.Combinator
+import Dice.Ast
+import Dice.Utils
 
 ssymbol : String -> Parser HString
 ssymbol = symbol . unpack

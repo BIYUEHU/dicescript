@@ -1,0 +1,18 @@
+package dice
+
+version    = 0.0.1
+brief      = "A library for parsing and evaluating dice expressions."
+authors    = "Arimura Sena"
+license    = "BAN-ZHINESE-USING"
+sourcedir  = "src"
+
+modules = Dice
+        , Dice.Parser
+        , Dice.Ast
+        , Dice.Evaluator
+        , Dice.Value
+        , Dice.Utils
+        , Dice.Token
+        , Dice.Lexer
+        , Dice.Internal
+        , Dice.Random

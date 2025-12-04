@@ -1,11 +1,11 @@
 module Main
 
-import Parser
-import Ast
-import Evaluator
-import Value
-import Utils
-import Test.Main
+import Dice.Parser
+import Dice.Ast
+import Dice.Evaluator
+import Dice.Value
+import Dice.Utils
+-- import Test.Main
 
 isOperation : String -> String -> Bool
 isOperation t s = t == s || t ++ "\r\n" == s || t ++ "\n" == s
@@ -16,7 +16,6 @@ loop onlyAst = do
   input <- getLine
   if isOperation "q" input then pure ()
     else if isOperation "s" input then loop $ not onlyAst
-    else if isOperation "t" input then testMain
     else do
       if isOperation "" input then pure () else do
       case parse input of
