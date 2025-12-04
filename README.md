@@ -36,7 +36,7 @@ Idris2 is a dependently typed and functional programming language, it powerfully
 
 ## Guide
 
-Please refer to the [DiceScript Guide](https://github.com/dice-project/dice-expr/blob/main/docs/syntax.md) for more details.
+Please refer to the [DiceScript Guide](GUIDE.md) for more details.
 
 ## Development
 
