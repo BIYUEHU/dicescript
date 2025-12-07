@@ -2,6 +2,7 @@ module Web
 
 import Web.Dom
 import Web.Isx
+import Web.Es
 import Data.List
 
 %default total
@@ -13,36 +14,37 @@ record ExampleBlock where
   defaultExpr : String
   examples : List String
 
-renderBlock : ExampleBlock -> HTML
-renderBlock ex =
+renderBlock : ExampleBlock -> ISX
+renderBlock (MkExample title defaultExpr examples) =
+  let id = show title in
   div [("class" .= "expr-block")] [
-    h3 [] [text ex.title],
-    div [("class" .= "expr-input-group")] [
+    h3 [] [text title],
+    div [("class" .= "expr-input-group"), ("data-input-id" .= id)] [
       input [
         ("type" .= "text"),
         ("class" .= "expr-input"),
         ("placeholder" .= "Enter expression"),
-        ("value" .= ex.defaultExpr)
+        ("value" .= defaultExpr)
       ],
-      button [("class" .= "btn btn-run")] [text "Run"],
-      button [("class" .= "btn btn-random")] [text "Random"]
+      button [("class" .= "btn btn-run"), ("data-run-id" .= id)] [text "Run"],
+      button [("class" .= "btn btn-random"), ("data-random-id" .= id)] [text "Random"]
     ],
-    div [("class" .= "result empty")] [text "Result will appear here..."],
-    div [("class" .= "examples")] [
-      h4 [] [text "Examples:"],
-      div [] (map (\e => code [] [text e]) ex.examples)
-    ]
+    div [("class" .= "result empty")] [text "Result will appear here..."]
+    -- div [("class" .= "examples")] [
+    --   h4 [] [text "Examples:"],
+    --   div [] (map (\e => code [] [text e]) ex.examples)
+    -- ]
   ]
 
-renderPage : List ExampleBlock -> HTML
+renderPage : List ExampleBlock -> ISX
 renderPage blocks =
-  div [("class" .= "container")] [
-    section [("class" .= "intro")] [
+  div ["class" .= "container"] [
+    section ["class" .= "intro"] [
       h1 [] [text "🎲 Dice Expression Playground"],
       p [] [text "A simple interpreter for dice notation expressions."],
       p [] [text "Try rolling some dice using standard RPG notation."]
     ],
-    div [] (map renderBlock blocks)
+    div ["class" .= "expr-blocks"] (map renderBlock blocks)
   ]
 
 exampleBlocks : List ExampleBlock
@@ -70,13 +72,13 @@ exampleBlocks = [
 -- 将 HTML DSL 转换并插入到 DOM
 export
 partial
-renderToDOM : HasIO IO => Ptr Element -> HTML -> IO ()
+renderToDOM : HasIO IO => Element -> ISX -> IO ()
 renderToDOM container html = do
   clearInner container
   elem <- buildElement html
   appendChild container elem
   where
-    buildElement : HTML -> IO $ Ptr Element
+    buildElement : ISX -> IO $ Element
     buildElement (Text s) = createTextNode s
     buildElement (Element tag attrs children) = do
       elem <- createElement tag
@@ -90,13 +92,13 @@ renderToDOM container html = do
 -- 主入口：动态生成所有块
 export
 partial
-main : IO ()
+main : HasIO IO => IO ()
 main = do
   Just container <- querySelector ".idris-dice-script-container"
     | Nothing => putStrLn "Container not found"
 
   -- 方案1: 使用 innerHTML (简单但可能有 XSS 风险)
-  -- let htmlStr = renderHTML (renderPage exampleBlocks)
+  -- let htmlStr = renderISX (renderPage exampleBlocks)
   -- setInnerHTML container htmlStr
 
   -- 方案2: 完全动态构建 DOM (安全)
@@ -109,14 +111,27 @@ main = do
 
 -- ============= 事件处理（占位） =============
 
-export
-setupEventHandlers : HasIO IO => Ptr Element -> IO ()
-setupEventHandlers container = do
+-- export
+-- setupEventHandlers : Element -> IO ()
+-- setupEventHandlers container = do
   -- TODO:
   -- 1. 找到所有 .btn-run 按钮，绑定 runExpr
   -- 2. 找到所有 .btn-random 按钮，绑定 randomExpr
   -- 3. 找到所有 .examples code，绑定 loadExample
-  pure ()
+  -- pure ()
+
+-- setupEventHandlers : HasIO IO => IO ()
+-- setupEventHandlers = do
+--   buttons <- querySelectorAll ".btn-run"
+--   for_ buttons $ \btn => do
+--     Just idStr <- getAttribute btn "data-run-id"
+--     addEventListener btn "click" $ do
+--       Just input <- querySelector $ "[data-input-id='" ++ idStr ++ "']"
+--       val <- getInputValue input
+--       result <- runExpr val  -- 你的逻辑
+--       Just resultBox <- querySelector $ "[data-result-id='" ++ idStr ++ "']"
+--       setTextContent resultBox result
+--     pure ()
 
 -- 实际的表达式运行逻辑
 export
