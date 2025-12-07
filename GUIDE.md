@@ -111,9 +111,9 @@ Cons operator. Prepends an element to an array.
 
 ```ts
 > 1 < 2 < 3
-T
+True
 > 1 == 1 == 1
-T
+True
 ```
 
 ### Logical Operators
@@ -123,10 +123,10 @@ T
 - `(!): Bool -> Bool` - Logical NOT (prefix)
 
 ```ts
-> T && F
-F
-> !F
-T
+> True && False
+False
+> !False
+True
 ```
 
 ## Lambda Expressions
@@ -313,8 +313,8 @@ Integer multiplication (truncates inputs to integers).
 Logical AND of multiple boolean values.
 
 ```ts
-> and(T, T, F)
-F
+> and(True, True, False)
+False
 ```
 
 #### `or: Bool... -> Bool`
@@ -322,8 +322,8 @@ F
 Logical OR of multiple boolean values.
 
 ```ts
-> or(T, F, F)
-T
+> or(True, False, False)
+True
 ```
 
 #### `not: Bool -> Bool`
@@ -331,8 +331,8 @@ T
 Logical NOT.
 
 ```ts
-> not(T)
-F
+> not(True)
+False
 ```
 
 #### `if: Bool -> Any -> Any -> Any`
@@ -340,7 +340,7 @@ F
 Conditional expression.
 
 ```ts
-> if(T, 1, 2)
+> if(True, 1, 2)
 1
 ```
 
@@ -397,7 +397,7 @@ Checks if an array contains an element.
 
 ```ts
 > include([1, 2, 3], 2)
-T
+True
 ```
 
 ### Set Operations
@@ -435,7 +435,7 @@ Checks if the first array contains all elements of the second array.
 
 ```ts
 > contain([1, 2, 3], [1, 2])
-T
+True
 ```
 
 ### Random Functions
@@ -486,7 +486,7 @@ Generates a random boolean with given probability (0.0 to 1.0).
 
 ```ts
 > bool(0.7)
-T
+True
 ```
 
 ## Constants

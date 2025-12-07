@@ -4,7 +4,7 @@
 
 # DiceScript
 
-<img src="public/logo.png" width="200px" height="200px" alt="logo"/>
+<img src="web/public/favicon.png" width="200px" height="200px" alt="logo"/>
 
 **A safe and fast dice expression evaluator base on Idris2.**
 

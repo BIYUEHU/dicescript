@@ -21,10 +21,9 @@ loop onlyAst = do
       case parse input of
         Left err => putStrLn $ "Parse error: " ++ err
         Right ast => if onlyAst then putStrLn $ "AST: " ++ show ast else do
-          result <- evaluate ast
-          case result of
-            Left err => putStrLn $ "Evaluation error: " ++ err
-            Right val => putStrLn $ "Result: " ++ show val
+          Right val <- evaluate ast
+            | Left err => putStrLn $ "Evaluation error: " ++ err
+          putStrLn $ "Result: " ++ show val
       loop onlyAst
 
 main : IO ()

@@ -3,7 +3,7 @@ import sys
 from pathlib import Path
 
 commands: list[str] = [
-    'python scripts/watch.py --root ./ --ext .idr --cmd "npm run build:web',
+    'python scripts/watch.py --root ./ --ext .idr --cmd "npm run build:web-only',
     "cd web && npx vite --force",
 ]
 
