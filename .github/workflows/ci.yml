@@ -6,6 +6,10 @@ on:
     paths:
       - "**.idr"
       - "package.json"
+      - "**.html"
+      - "**.css"
+      - "**.ipkg"
+      - ".github/**"
 
 permissions:
   contents: read
@@ -41,6 +45,8 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: web/dist
+          target_branch: webpage
+          fqdn: https://dice.hotaru.icu
 
       - name: Deploy to GitHub Pages
         id: deployment
