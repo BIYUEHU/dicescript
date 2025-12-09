@@ -45,11 +45,11 @@ page = div ["class" .= "container"] [
       p [] ["Try rolling some dice using standard RPG notation."],
       ul [] [
           li [] [ text "Project links: ", a [
-            "href" .= "https://github.com/BIYUEHU/dice-expr",
+            "href" .= "https://github.com/BIYUEHU/dicescript",
             "target" .= "_blank"
-            ] ["BIYUEHU/dice-expr"] ],
+            ] ["BIYUEHU/dicescript"] ],
           li [] [ text "DiceScript Guide: ", a [
-            "href" .= "https://github.com/dice-project/dice-expr/blob/main/docs/syntax.md",
+            "href" .= "https://github.com/dice-project/dicescript/blob/main/docs/syntax.md",
             "target" .= "_blank"
             ] ["👉 Here"]]
         ]

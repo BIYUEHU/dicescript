@@ -1,5 +1,5 @@
 {
-  "name": "dice-expr",
+  "name": "dicescript",
   "private": true,
   "version": "0.1.0",
   "scripts": {
@@ -11,6 +11,6 @@
     "build:web-only": "cd web && idris2 --install ../dice.ipkg && idris2 --cg javascript --build",
     "build:web": "npm run build:web-only && cd web && vite build",
     "test": "cd test && idris2 --install ../dice.ipkg && idris2 --cg node --build && node build/exec/Test.js",
-    "pack": "idris2 --cg javascript --build # TODO"
+    "pack": "idris2 --cg javascript --build  # TODO"
   }
 }
