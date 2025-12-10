@@ -12,47 +12,10 @@ on:
       - ".github/**"
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
-
+  contents: write
+  
 jobs:
-  deploy-pages:
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-
-      - name: Install Idris 2 & Pack
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y chezscheme
-          echo "chezscheme" | bash -c "$(curl -fsSL https://raw.githubusercontent.com/stefan-hoeck/idris2-pack/main/install.bash)"
-          echo "$HOME/.pack/bin" >> $GITHUB_PATH
-
-      - name: Verify Idris 2 Installation
-        run: idris2 --version
-
-      - name: Build Web Artifacts
-        run: npm run build:web
-
-      - name: Upload Pages Artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: web/dist
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-
-  build-repl:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
@@ -62,7 +25,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-      
+
       - name: Install Idris 2 & Pack
         run: |
           sudo apt-get update
@@ -79,8 +42,20 @@ jobs:
       - name: Build REPL Executable
         run: npm run build
 
-      - name: Upload REPL Artifact
+      - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
           name: repl-executable
           path: ./repl/build/exec/Repl.js
+
+      - name: Build Web Artifacts
+        run: npm run build:web
+
+      - name: Deploy to GitHub Pages
+        uses: crazy-max/ghaction-github-pages@v4
+        with:
+          target_branch: webpage
+          build_dir: web/dist
+          fqdn: https://dice.hotaru.icu
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
