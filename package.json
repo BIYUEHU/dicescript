@@ -1,9 +1,13 @@
 {
   "name": "dicescript",
-  "private": true,
   "version": "0.1.0",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "description": "A library for parsing and evaluating dice expressions.",
+  "license": "BAN-ZHINESE-USING",
+  "author": "Arimura Sena <me@hotaru.icu>",
   "scripts": {
-    "start": "node repl/build/exec/Repl.js",
+    "start": "node repl/build/exec/Repl",
     "dev": "python scripts/watch.py --root ./ --ext .idr --cmd \"npm run dev:only\"",
     "dev:only": "npm run build && npm run start",
     "build": "cd repl && idris2 --install ../dice.ipkg && idris2 --cg node --build",
@@ -11,6 +15,13 @@
     "build:web-only": "cd web && idris2 --install ../dice.ipkg && idris2 --cg javascript --build",
     "build:web": "npm run build:web-only && cd web && npx vite build",
     "test": "cd test && idris2 --install ../dice.ipkg && idris2 --cg node --build && node build/exec/Test.js",
-    "pack": "idris2 --cg javascript --build  # TODO"
-  }
+    "packs": "python scripts/pack.py"
+  },
+  "files": [
+    "lib",
+    "kotori.yml",
+    "bin.js",
+    "LICENSE",
+    "README.md"
+  ]
 }

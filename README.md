@@ -23,7 +23,7 @@ DiceScript is a superset of Mathematical (Arithmetic) Expression, it supports ma
 - Infix operaters: Dice `d`, Range `..`, Random Integer `~`, Concatenation `++`, Colon `:`
 - More math functions: `round`, `floor`, `ceil`, `abs`, `sqrt`...
 - Array functions: `map`, `filter`, `fold`, `reduce`, `flatMap`, `every`, `some`, `length`, `reverse`, `sort`, `include` ...
-- Set functions: `union`, `intersection`, `difference` ...
+- Set functions: `union`, `intersection`, `offset` ...
 - Random functions: `int`, `real`, `bool`, `shuffle`, `pick` ...
 - List comprehension (Similar to Mathematical Set): `[x*2 | x <- [1..5]]`
 - Math
@@ -37,6 +37,15 @@ Idris2 is a dependently typed and functional programming language, it powerfully
 ## Guide
 
 Please refer to the [DiceScript Guide](GUIDE.md) for more details.
+
+## Supported Backends
+
+- Default (Repl): `node`
+- Default (Web Demo): `javascript` (Browser)
+- `chez`
+- `chez-sep`
+- `racket`
+- `refc`
 
 ## Development
 

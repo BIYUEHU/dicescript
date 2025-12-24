@@ -173,11 +173,11 @@ Iunion [VArray xs, VArray ys] =
 Iunion [x, y] = pure $ Left $ "Expects two arrays but got " ++ show x ++ " and " ++ show y
 Iunion xs = pure $ Left $ "Expects two arrays but got " ++ show (length xs) ++ " arguments"
 
-Idifference : BuiltinFunction
-Idifference [VArray xs, VArray ys] =
+Ioffset : BuiltinFunction
+Ioffset [VArray xs, VArray ys] =
   pure $ Right $ VArray (filter (\x => not (elem x ys)) xs)
-Idifference [x, y] = pure $ Left $ "Expects two arrays but got " ++ show x ++ " and " ++ show y
-Idifference xs = pure $ Left $ "Expects two arrays but got " ++ show (length xs) ++ " arguments"
+Ioffset [x, y] = pure $ Left $ "Expects two arrays but got " ++ show x ++ " and " ++ show y
+Ioffset xs = pure $ Left $ "Expects two arrays but got " ++ show (length xs) ++ " arguments"
 
 Iintersection : BuiltinFunction
 Iintersection [VArray xs, VArray ys] =
@@ -327,7 +327,7 @@ builtinFunctions = [
     , ("sum", Isum)
     , ("union", Iunion)
     , ("intersection", Iintersection)
-    , ("difference", Idifference)
+    , ("offset", Ioffset)
     , ("contain", Icontain)
     , ("include", Iinclude)
     , ("shuffle", Ishuffle)

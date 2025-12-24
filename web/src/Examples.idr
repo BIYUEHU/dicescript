@@ -34,7 +34,7 @@ exampleBlocks = [
   -- Basic Dice Rolling
   MkExample "Single Roll"                    "1d20",
   MkExample "Multiple Dice"                  "4d6",
-  MkExample "Zero Dice → Empty Array"        "0d8",
+  MkExample "Zero Dice => Empty Array"        "0d8",
 
   -- Arithmetic & Grouping
   MkExample "Basic Arithmetic"               "2d6 + 3",
@@ -86,7 +86,7 @@ exampleBlocks = [
   -- Set Operations
   MkExample "Union"                          "union([1,2], [2,3])",
   MkExample "Intersection"                   "intersection([1,2,3], [2,3,4])",
-  MkExample "Difference"                     "difference([1,2,3], [2])",
+  MkExample "Difference"                     "offset([1,2,3], [2])",
   MkExample "Contains All"                   "contain([1,2,3,4], [2,4])",
 
   -- Random Functions

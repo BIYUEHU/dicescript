@@ -20,9 +20,9 @@ nextBits (MkRNG s) =
       r  = s3 * 2685821657736338717
   in (r, MkRNG s3)
 
-export
-%foreign "javascript:lambda:()=>BigInt(Date.now())"
-getSeed : Integer
+-- export
+-- %foreign "javascript:lambda:()=>BigInt(Date.now())"
+-- getSeed : Integer
 
 -- export
 -- randomInt : Integer -> Integer -> RNG -> (Integer, RNG)
@@ -36,6 +36,8 @@ getSeed : Integer
 
 export
 %foreign "javascript:lambda:() => () => Math.random()"
+         "scheme:(random 1.0)"
+         "C:idris2_random, libidris2_support"
 prim__random : IO Double
 
 export

@@ -18,6 +18,13 @@ public export
 BuiltinFunction : Type
 BuiltinFunction = List Value -> IO $ OpResult Value
 
+-- public export
+-- RandomIntFunction: Type
+-- RandomIntFunction = Int -> Int -> IO Int
+
+-- public export
+-- BuiltinFunctionWithRandom: Type
+-- BuiltinFunctionWithRandom = RandomIntFunction -> BuiltinFunction
 
 public export
 BuiltinWithLambdaFunction : Type

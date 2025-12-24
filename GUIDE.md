@@ -420,12 +420,12 @@ Returns the intersection of two arrays.
 [2, 3]
 ```
 
-#### `difference: [Any] -> [Any] -> [Any]`
+#### `offset: [Any] -> [Any] -> [Any]`
 
 Returns elements in the first array but not in the second.
 
 ```ts
-> difference([1, 2, 3], [2, 4])
+> offset([1, 2, 3], [2, 4])
 [1, 3]
 ```
 

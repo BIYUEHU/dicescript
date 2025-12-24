@@ -1,9 +1,9 @@
-package repl
+package js-pack
 
 version    = 0.0.1
 authors    = "Arimura Sena"
 license    = "BAN-ZHINESE-USING"
 depends    = dice
 sourcedir  = "src"
-executable = "Repl"
+executable = "index.js"
 main       = Main
