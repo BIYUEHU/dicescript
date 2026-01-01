@@ -1,11 +1,25 @@
 {
-  "name": "dicescript",
-  "version": "0.1.0",
+  "name": "dicescripts",
+  "version": "0.1.14",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "description": "A library for parsing and evaluating dice expressions.",
   "license": "BAN-ZHINESE-USING",
   "author": "Arimura Sena <me@hotaru.icu>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/biyuehu/dicescript"
+  },
+  "keywords": [
+    "dice",
+    "expression",
+    "parser",
+    "evaluator",
+    "roll",
+    "dice-roll",
+    "roll-dice",
+    "idris"
+  ],
   "scripts": {
     "start": "node repl/build/exec/Repl",
     "dev": "python scripts/watch.py --root ./ --ext .idr --cmd \"npm run dev:only\"",
@@ -19,9 +33,9 @@
   },
   "files": [
     "lib",
-    "kotori.yml",
-    "bin.js",
+    "src",
+    "dice.pkg",
     "LICENSE",
-    "README.md"
+    "*.md"
   ]
 }

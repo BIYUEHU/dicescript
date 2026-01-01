@@ -1,5 +1,29 @@
 # DiceScript Guide
 
+## Js Usage
+
+Exported definition:
+
+```typescript
+export declare type IO<T> = () => T
+export declare type DiceValue = boolean | number | DiceValue[] | ((x: unknown) => unknown)
+
+declare const exportsObj: {
+  runDice: (code: string) => IO<DiceValue>
+}
+
+export default exportsObj
+```
+
+Usage:
+
+```typescript
+import { runDice } from 'dice-expr'
+
+const result = runDice('2d6')
+console.log(result()) // [3, 5]
+```
+
 ## Basic Syntax
 
 DiceScript expressions follow these BNF grammar rules:

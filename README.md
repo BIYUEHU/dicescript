@@ -1,12 +1,16 @@
 <!-- markdownlint-disable -->
 
+<!-- > Fuck [you](https://github.com/sealdice/dicescript), [you](https://github.com/sealdice/dicescript) bastard, [you](https://github.com/sealdice/dicescript) used my npm package name before [you](https://github.com/sealdice/dicescript) could. I created this repository first. -->
+
 <div align="center">
 
 # DiceScript
 
-<img src="web/public/favicon.png" width="200px" height="200px" alt="logo"/>
+<img src="https://github.com/BIYUEHU/dicescript/blob/main/web/public/favicon.png?raw=true" width="200px" height="200px" alt="logo"/>
 
 **A safe and fast dice expression evaluator base on Idris2.**
+
+[-> PlayGround <-](http://dice.hotaru.icu/)
 
 </div>
 

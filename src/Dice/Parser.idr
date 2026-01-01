@@ -81,8 +81,7 @@ mutual
   parsePrimaryExpr state = do
     (baseExpr, state') <- parseAtomicExpr state
     parseCallChain baseExpr state'
-  
-  -- 新增：解析原子表达式（不包括函数调用）
+
   parseAtomicExpr : ParseState -> OpResult (DExpr, ParseState)
   parseAtomicExpr state = case state.current of
     TLambda => do
